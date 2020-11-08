@@ -31,7 +31,7 @@ class Home extends BaseController
     }
     //--------------------------------------------------------------------
     public function detail($id){
-        $data ['barang']= $this->barangm->where('penjual.id_penjual',$id)
+        $data ['barang']= $this->barangm->where('id_penjual',$id)
                                         ->findAll();  
         $data ['penjual']= $this->penjualm->findAll();
         // Mengirim data ke dalam view
