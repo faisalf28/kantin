@@ -23,9 +23,22 @@ class Home extends BaseController
         // ====================================================
         $data ['barang']= $this->barangm->findAll();
         $data ['penjual']= $this->penjualm->findAll();
+        echo view('header', $data);
         echo view('index', $data);
+        echo view('footer');
+
         
     }
-	//--------------------------------------------------------------------
+    //--------------------------------------------------------------------
+    public function detail($id){
+        $data ['barang']= $this->barangm->where('penjual.id_penjual',$id)
+                                        ->findAll();  
+        $data ['penjual']= $this->penjualm->findAll();
+        // Mengirim data ke dalam view
+        echo view('header', $data);
+        echo view('detail', $data);
+        echo view('footer');
+
+    }
 
 }
