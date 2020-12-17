@@ -21,6 +21,8 @@ class Home extends BaseController
              $this->barangm;
         }
         // ====================================================
+        $session = session('cart');
+        $data ['total'] = is_array($session)? array_values($session): array();
         $data ['barang']= $this->barangm->findAll();
         $data ['penjual']= $this->penjualm->findAll();
         echo view('header', $data);

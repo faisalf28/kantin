@@ -6,10 +6,11 @@ class PenjualModel extends Model
 {
     protected $table = "penjual";    
     
-    public function getModel($id = false)
+    public function getPenjual($id = false)
     {
         if($id === false){
             return $this->table('penjual')
+                        ->where('id_penjual', $id)
                         ->get()
                         ->getResultArray();
         } else {
@@ -18,5 +19,11 @@ class PenjualModel extends Model
                         ->get()
                         ->getRowArray();
         }   
-    } 
+    }
+
+    public function insert($data = NULL, bool $returnID = true)
+    {
+        return $this->db->table($this->table)->insert($data);
+    }  
+
 }
